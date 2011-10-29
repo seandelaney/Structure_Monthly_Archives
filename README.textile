@@ -1,0 +1,1 @@
+Allows you to create a monthly archive list based on Structure pages.
