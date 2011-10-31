@@ -8,7 +8,7 @@ $plugin_info = array(
 	'pi_version' => '1.0',
 	'pi_author' => 'Sean Delaney',
 	'pi_author_url' => 'http://www.seandelaney.co.uk',
-	'pi_description' => 'Allows you to create a monthly archive list based on Structure pages.',
+	'pi_description' => 'Creates a monthly archive list based on Structure pages by passing an Entry ID.',
 	'pi_usage' => structure_monthly_archives::usage()
 );
 

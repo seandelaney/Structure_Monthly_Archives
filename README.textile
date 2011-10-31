@@ -1,1 +1,43 @@
-Allows you to create a monthly archive list based on Structure pages.
+Creates a monthly archive list based on Structure pages by passing an Entry ID.
+
+Most useful for blog or news monthly archive lists.
+
+No need to rely on Channels to separate your entries. You could consider this simple plugin as an alternative to the Archive Month Links tag.
+
+Requires the Structure module to be installed.
+
+Usage:
+		
+=============================
+The Tag
+=============================
+
+{exp:structure_monthly_archives:show}
+
+==============
+TAG PARAMETERS
+==============
+
+parent_entry_id=
+The Entry ID must be a channel entry that uses Structure and status set to open
+[REQUIRED]
+
+url_path=
+The url path of where your archives template lives.  This can be a /template_group/template/ combo.
+
+Example: /news-events/archives/2011/10/  Also see tag examples below.
+[REQUIRED]
+
+css_class=
+Allows you to set a CSS Class
+[OPTIONAL]
+
+css_id=
+Allows you to set a CSS ID
+[OPTIONAL]
+
+==============
+TAG EXAMPLES
+==============
+
+{exp:structure_monthly_archives:show parent_entry_id="3" url_path="/news-events/archives/" css_class="news_events_archives" css_id="news_events_archives"}
