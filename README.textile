@@ -19,13 +19,11 @@ TAG PARAMETERS
 ==============
 
 parent_entry_id=
-The Entry ID must be a channel entry that uses Structure and status set to open
+The Entry ID must be a channel entry that uses Structure and status set to open.  For example, this could be your News & Events Entry ID.
 [REQUIRED]
 
 url_path=
-The url path of where your archives template lives.  This can be a /template_group/template/ combo.
-
-Example: /news-events/archives/2011/10/  Also see tag examples below.
+The url path of where your archives template lives.  This can be a /template_group/template/ combo. For example: /news-events/archives/2011/10/. Also see tag examples below.
 [REQUIRED]
 
 css_class=
