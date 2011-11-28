@@ -5,7 +5,7 @@ require_once('config.php');
 
 $plugin_info = array(
 	'pi_name' => 'Structure Monthly Archives',
-	'pi_version' => '1.0',
+	'pi_version' => '1.1',
 	'pi_author' => 'Sean Delaney',
 	'pi_author_url' => 'http://www.seandelaney.co.uk',
 	'pi_description' => 'Creates a monthly archive list based on Structure pages by passing an Entry ID.',
@@ -41,13 +41,19 @@ class Structure_monthly_archives {
 		$sma_url_path = $this->EE->TMPL->fetch_param('url_path');
 		$sma_css_class = $this->EE->TMPL->fetch_param('css_class');
 		$sma_css_id = $this->EE->TMPL->fetch_param('css_id');
+		$sma_listing = $this->EE->TMPL->fetch_param('listing');
 		
 		$sma_archive_entries = $sma_entry_ids = array();
 		
 		// Check for required tag parameters
 		if(!empty($sma_parent_entry_id) && !empty($sma_url_path)) :
-			// We want to get all the entry ids for a parent id from the Structure table.
-			$sma_results = $this->EE->db->query('SELECT entry_id FROM '.$this->EE->db->dbprefix('structure').' WHERE parent_id = '.$sma_parent_entry_id);
+			if($sma_listing == true) :
+				// We want to get all the entry ids for a parent id from the Structure Listing table.
+				$sma_results = $this->EE->db->query('SELECT entry_id FROM '.$this->EE->db->dbprefix('structure_listings').' WHERE parent_id = '.$sma_parent_entry_id);
+			else :
+				// We want to get all the entry ids for a parent id from the Structure table.
+				$sma_results = $this->EE->db->query('SELECT entry_id FROM '.$this->EE->db->dbprefix('structure').' WHERE parent_id = '.$sma_parent_entry_id);
+			endif;
 		
 			// If there are no records found, then we do nothing - as we can't!
 			if($sma_results->num_rows() > 0) :
@@ -145,6 +151,10 @@ class Structure_monthly_archives {
 		Example: /news-events/archives/2011/10/  Also see tag examples below.
 		[REQUIRED]
 		
+		listing=
+		Set true if you wish to use a Listing
+		[OPTIONAL]
+		
 		css_class=
 		Allows you to set a CSS Class
 		[OPTIONAL]
@@ -157,7 +167,7 @@ class Structure_monthly_archives {
 		TAG EXAMPLES
 		==============
 		
-		{exp:structure_monthly_archives:show parent_entry_id="3" url_path="/news-events/archives/" css_class="news_events_archives" css_id="news_events_archives"}
+		{exp:structure_monthly_archives:show parent_entry_id="3" url_path="/news-events/archives/" listing="true" css_class="news_events_archives" css_id="news_events_archives"}
 		<?php
   		$buffer = ob_get_contents();
 	
